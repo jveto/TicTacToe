@@ -1,0 +1,169 @@
+﻿@model TicTacToe.Models.Numbers
+<div class="container">
+    <h1>Tic-Tac-Toe</h1>
+    @{
+        if(ViewBag.player == 0){
+            <h3>Player X's turn!</h3>
+        }
+        else{
+            <h3>Player O's turn!</h3>
+        }
+    }
+    <div class="gameBoard">
+        <div class="gameRow">
+            @{
+                if(ViewBag.MarkedBoxes[6] == 1){
+                    <div class="box">X</div>
+                }
+                else if(ViewBag.MarkedBoxes[6] == 2){
+                    <div class="box">O</div>
+                }
+                else{
+                    <div class="box"></div>
+                }
+                if(ViewBag.MarkedBoxes[7] == 1){
+                    <div class="box">X</div>
+                }
+                else if(ViewBag.MarkedBoxes[7] == 2){
+                    <div class="box">O</div>
+                }
+                else{
+                    <div class="box"></div>
+                }
+                if(ViewBag.MarkedBoxes[8] == 1){
+                    <div class="box">X</div>
+                }
+                else if(ViewBag.MarkedBoxes[8] == 2){
+                    <div class="box">O</div>
+                }
+                else{
+                    <div class="box"></div>
+                }
+            }
+        </div>
+        <div class="gameRow">
+            @{
+                if(ViewBag.MarkedBoxes[3] == 1){
+                    <div class="box">X</div>
+                }
+                else if(ViewBag.MarkedBoxes[3] == 2){
+                    <div class="box">O</div>
+                }
+                else{
+                    <div class="box"></div>
+                }
+                if(ViewBag.MarkedBoxes[4] == 1){
+                    <div class="box">X</div>
+                }
+                else if(ViewBag.MarkedBoxes[4] == 2){
+                    <div class="box">O</div>
+                }
+                else{
+                    <div class="box"></div>
+                }
+                if(ViewBag.MarkedBoxes[5] == 1){
+                    <div class="box">X</div>
+                }
+                else if(ViewBag.MarkedBoxes[5] == 2){
+                    <div class="box">O</div>
+                }
+                else{
+                    <div class="box"></div>
+                }
+            }
+        </div>
+        <div class="gameRow">
+            @{
+                if(ViewBag.MarkedBoxes[0] == 1){
+                    <div class="box">X</div>
+                }
+                else if(ViewBag.MarkedBoxes[0] == 2){
+                    <div class="box">O</div>
+                }
+                else{
+                    <div class="box"></div>
+                }
+                if(ViewBag.MarkedBoxes[1] == 1){
+                    <div class="box">X</div>
+                }
+                else if(ViewBag.MarkedBoxes[1] == 2){
+                    <div class="box">O</div>
+                }
+                else{
+                    <div class="box"></div>
+                }
+                if(ViewBag.MarkedBoxes[2] == 1){
+                    <div class="box">X</div>
+                }
+                else if(ViewBag.MarkedBoxes[2] == 2){
+                    <div class="box">O</div>
+                }
+                else{
+                    <div class="box"></div>
+                }
+            }
+        </div>
+    </div>
+    <div class="gameBoard">
+        <div class="gameRow">
+            <div class="box">7</div>
+            <div class="box">8</div>
+            <div class="box">9</div>
+        </div>
+        <div class="gameRow">
+            <div class="box">4</div>
+            <div class="box">5</div>
+            <div class="box">6</div>
+        </div>
+        <div class="gameRow">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+        </div>
+    </div>
+    
+    @{
+        if(ViewBag.GameState == "Active"){
+            <form action="move" method="POST">
+                <div class="myInput">
+                    <label for="location">Choose a square!</label>
+                    <select name="Box" id="Box">
+                        @{
+                            foreach(var option in ViewBag.Options){
+                                <option value=@option>@option</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <input type="submit" value="Submit">
+            </form>
+        }
+        else if(ViewBag.GameState == "CatsGame"){
+            <h1>Cat's Game!</h1>
+            <form action="new" method="POST">
+                <div class="myInput">
+                    <label for="newGame">Start a new game?</label>
+                    <input type="submit" value="Yes">
+                </div>
+            </form>
+        }
+        else if(ViewBag.GameState == "P1Win"){
+            <h1>Player X wins!</h1>
+            <form action="new" method="POST">
+                <div class="myInput">
+                    <label for="newGame">Start a new game?</label>
+                    <input type="submit" value="Yes">
+                </div>
+            </form>
+        }
+        else{
+            <h1>Player O wins!</h1>
+            <form action="new" method="POST">
+                <div class="myInput">
+                    <label for="newGame">Start a new game?</label>
+                    <input type="submit" value="Yes">
+                </div>
+            </form>
+        }
+    }
+</div>
